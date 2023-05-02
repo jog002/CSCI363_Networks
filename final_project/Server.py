@@ -25,13 +25,13 @@ server_socket.listen()
 client_conn, address = server_socket.accept()
 print("Connection to Client established")
 server_public_key = server_dh_key.gen_public_key()
-print("Initial server public key: ", server_public_key)
+print("Initial server public key: ", hex(server_public_key))
 client_conn.send(server_public_key.to_bytes(2048, 'big'))
 
 # receive the client's public key and generate the shared key
 client_public_key_bytes = client_conn.recv(2048)
 client_public_key = int.from_bytes(client_public_key_bytes, 'big')
-print("Received Client public key: ", client_public_key)
+print("Received Client public key: ", hex(client_public_key))
 
 server_shared_secret = server_dh_key.gen_shared_key(client_public_key)
 
@@ -45,3 +45,5 @@ if server_shared_secret == str(client_shared_secret)[2:]:
     print("SUCCESS: the shared secret keys are identical\n\n")
 else:
     print("FAILURE: the shared secret keys are not identical\n\n")
+
+server_socket.close()

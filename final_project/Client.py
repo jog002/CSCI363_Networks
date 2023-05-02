@@ -25,7 +25,7 @@ print("Connection to Server established")
 
 # Generate and send the public key
 client_public_key = client_dh_key.gen_public_key()
-print("Initial client public key: ", str(client_public_key))
+print("Initial client public key: ", hex(client_public_key))
 client_socket.send(client_public_key.to_bytes(2048, 'big'))
 
 # Receive the servers public key and generate the shared secret
