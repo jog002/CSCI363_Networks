@@ -1,3 +1,13 @@
+"""
+Diffie-Hellman Key Exchange
+CSCI 363 Networks
+BY: Christiaan Smith, Jackie Quinlavin, and Oscar Giller
+
+This server script should be run before the companion client script. It receives
+a connection from the client and then performs the Diffie-Hellman Key Exchange
+to establish a shared key between the client and server without allowing
+any potential interception of privet information.
+"""
 import socket
 from pyDH import DiffieHellman
 
